@@ -44,7 +44,10 @@ app.register_blueprint(video_tag, url_prefix='/videos')
 
 @app.route('/')
 def index():
-    return render_template('base.html')
+    if request.method == 'GET':
+        return {"message": "Welcome to Python Data Etl, explore the tool"}
+    else:
+        return {"message": "Invalid Request"}
 
 
 @app.route('/video-tags')

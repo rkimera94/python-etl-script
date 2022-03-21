@@ -1,3 +1,4 @@
+from ast import Return
 from re import X
 from urllib import request
 from flask import jsonify, request
@@ -5,6 +6,10 @@ from flask_sqlalchemy import SQLAlchemy
 import os
 from urllib.parse import quote
 import models
+
+
+def video_tags():
+    return {"message": "ttt"}
 
 
 def tag_durations():
