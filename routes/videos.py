@@ -11,6 +11,7 @@ from controllers.video_tags import tag_durations, video_tags
 video_tag = Blueprint('video_tag', __name__)
 
 
-video_tag.route('/tags', methods=['GET'])(video_tags)
+video_tag.route('/', methods=['GET'])(video_tags)
+
 
 video_tag.route('/tag-avg-duration', methods=['GET'])(tag_durations)
