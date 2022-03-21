@@ -9,7 +9,15 @@ import models
 
 
 def video_tags():
-    return {"message": "ttt"}
+    if request.method == 'GET':
+        video_tags = models.VideoTags.query.all()
+        result = [video_tag.serialize for video_tag in video_tags]
+        data = jsonify({"status": 200,
+                       "message": "Data Fetched Successfully", "data": result})
+
+        return data
+    else:
+        return {"message": "Request Failed"}
 
 
 def tag_durations():
@@ -19,8 +27,6 @@ def tag_durations():
         result = [tag_duration.serialize for tag_duration in tag_durations]
         max_tags_avg_duration = max(result, key=lambda x: x['video_duration'])
         min_tags_avg_duration = min(result, key=lambda x: x['video_duration'])
-
-        print(max_tags_avg_duration)
 
         dataReturn = {"data": result, "max_tags_avg_duration": max_tags_avg_duration,
                       "min_tags_avg_duration": min_tags_avg_duration,

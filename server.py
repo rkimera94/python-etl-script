@@ -50,28 +50,13 @@ def index():
         return {"message": "Invalid Request"}
 
 
-@app.route('/video-tags')
-def video_tags():
-    if request.method == 'GET':
-        video_tags = models.VideoTags.query.all()
-        return jsonify([video_tag.serialize for video_tag in video_tags])
-    else:
-        return {"message": "Request Failed"}
-
-
-# data report
-@app.route('/tag-durations')
-def tag_durations():
-    if request.method == 'GET':
-        tag_durations = models.TagAvgDuration.query.all()
-
-        filter = [tag_duration.serialize for tag_duration in tag_durations]
-
-        data = jsonify({"data": filter, "status": 200})
-
-        return data
-    else:
-        return {"message": "Request Failed"}
+# @app.route('/video-tags')
+# def video_tags():
+#     if request.method == 'GET':
+#         video_tags = models.VideoTags.query.all()
+#         return jsonify([video_tag.serialize for video_tag in video_tags])
+#     else:
+#         return {"message": "Request Failed"}
 
 
 @app.route('/data-to-loaded')
