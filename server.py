@@ -16,9 +16,6 @@ from controller import read_table_data
 from routes.videos import video_tag
 
 app = Flask(__name__)
-# app.config[
-#     "SQLALCHEMY_DATABASE_URI"
-# ] = create_engine('postgresql://postgres:%s@localhost/aviyel_1' % quote('123@Ht'))
 
 
 app.config[
@@ -66,9 +63,6 @@ def tag_durations():
         tag_durations = models.TagAvgDuration.query.all()
 
         filter = [tag_duration.serialize for tag_duration in tag_durations]
-
-        # data = jsonify(
-        #     [tag_duration.serialize for tag_duration in tag_durations])
 
         data = jsonify({"data": filter, "status": 200})
 
